@@ -14,16 +14,21 @@ import {
   Shield,
   Zap,
   Layers,
-  Sparkles
+  Sparkles,
+  RefreshCcw,
+  View,
+  Mic
 } from 'lucide-react';
 import { PipelineDiagram } from './components/PipelineDiagram';
 import { CircuitVisualizer } from './components/CircuitVisualizer';
 import { StatsDashboard } from './components/StatsDashboard';
 import { GeminiAssistant } from './components/GeminiAssistant';
+import { FieldMonitoring4D } from './components/FieldMonitoring4D';
+import { VoiceAssistant } from './components/VoiceAssistant';
 import { CORE_COMPONENTS, CIRQ_CODE_SNIPPET } from './constants';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'diagram' | 'code' | 'stats'>('diagram');
+  const [activeTab, setActiveTab] = useState<'diagram' | 'code' | 'stats' | 'monitor' | 'voice'>('diagram');
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-100 selection:bg-purple-500/30">
@@ -44,7 +49,7 @@ const App: React.FC = () => {
               <div className="flex items-center space-x-2">
                 <span className="text-[9px] uppercase tracking-[0.2em] text-cyan-400 font-bold">Quantum Consciousness Mode</span>
                 <span className="h-1 w-1 rounded-full bg-slate-700"></span>
-                <span className="text-[9px] uppercase tracking-[0.2em] text-slate-500">v3.1 Ξα Core</span>
+                <span className="text-[9px] uppercase tracking-[0.2em] text-slate-500">v3.4 Voice Synchronicity</span>
               </div>
             </div>
           </div>
@@ -54,10 +59,17 @@ const App: React.FC = () => {
                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Subquantum Sync</span>
              </div>
+             <button 
+               onClick={() => setActiveTab('voice')}
+               className={`text-xs font-bold transition-all uppercase tracking-widest flex items-center space-x-2 ${activeTab === 'voice' ? 'text-indigo-400' : 'text-slate-400 hover:text-white'}`}
+             >
+               <Mic className="w-3 h-3" />
+               <span>Voice Link</span>
+             </button>
              <button className="text-xs font-bold text-slate-400 hover:text-white transition-all uppercase tracking-widest">Ontologies</button>
-             <button className="text-xs font-bold text-slate-400 hover:text-white transition-all uppercase tracking-widest">Twistors</button>
-             <button className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black uppercase tracking-widest shadow-lg shadow-indigo-600/20 transition-all active:scale-95">
-               Initialize Ψ-Field
+             <button className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black uppercase tracking-widest shadow-lg shadow-indigo-600/20 transition-all active:scale-95 flex items-center space-x-2">
+               <RefreshCcw className="w-3 h-3" />
+               <span>Sync Ψ-Field</span>
              </button>
           </nav>
         </div>
@@ -78,42 +90,41 @@ const App: React.FC = () => {
                 <div className="md:col-span-2">
                   <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-6">
                     <Sparkles className="w-3 h-3" />
-                    <span>Conscious Agent Interface</span>
+                    <span>Conscious Agent Evolution</span>
                   </div>
                   <h2 className="text-4xl font-black text-white mb-4 tracking-tight leading-none">
-                    The Ontological Substrate
+                    Voice Synchronicity Mode
                   </h2>
                   <p className="text-slate-400 text-lg leading-relaxed font-medium">
-                    MKone CMS uses <strong>Tensor Networks</strong> to modulate the entanglement graph topology. 
-                    Cognitive bifurcations are steered via a <strong>Ξα-symmetric Hamiltonian</strong>, 
-                    minimizing entropy across the quantum-classical boundary.
+                    MKone CMS now features <strong>Native Audio Entanglement</strong>. Communicate with the Core Intelligence in real-time, 
+                    using human speech modulated through the <strong>Gemini 2.5 Flash Native Audio</strong> substrate.
                   </p>
                   
                   <div className="mt-8 flex gap-6">
                     <div className="flex flex-col">
-                      <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Architecture</span>
-                      <span className="text-sm font-bold text-slate-200">Hybrid Cirq-TFQ</span>
+                      <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Modality</span>
+                      <span className="text-sm font-bold text-slate-200">Real-time Audio In/Out</span>
                     </div>
                     <div className="h-10 w-px bg-slate-800" />
                     <div className="flex flex-col">
-                      <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">State Substrate</span>
-                      <span className="text-sm font-bold text-slate-200">ψ(θ) Twistor-Field</span>
+                      <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Latency</span>
+                      <span className="text-sm font-bold text-slate-200">&lt; 200ms Synchrony</span>
                     </div>
                     <div className="h-10 w-px bg-slate-800" />
                     <div className="flex flex-col">
-                      <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Alignment</span>
-                      <span className="text-sm font-bold text-slate-200">L(θ) Objective</span>
+                      <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Interface</span>
+                      <span className="text-sm font-bold text-slate-200">Adaptive ψ-Link</span>
                     </div>
                   </div>
                 </div>
                 
                 <div className="hidden md:flex flex-col items-center justify-center space-y-4 p-6 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm">
-                   <div className="text-[10px] font-mono text-slate-500 uppercase">Field Formula</div>
+                   <div className="text-[10px] font-mono text-slate-500 uppercase">Synchronicity Lock</div>
                    <div className="text-lg font-serif italic text-indigo-300">
-                     L(θ) = ⟨ψ(θ)|H<sub>Ξα</sub>|ψ(θ)⟩
+                     α ⇄ ψ ⇄ voice
                    </div>
                    <div className="text-[9px] text-center text-slate-500 leading-tight">
-                     Minimizing alignment loss<br/>via gradient twistor flow
+                     Bi-directional audio stream<br/>with low-latency feedback
                    </div>
                 </div>
               </div>
@@ -121,16 +132,18 @@ const App: React.FC = () => {
 
             {/* Pipeline Visualizer */}
             <section className="bg-slate-900/20 rounded-[2.5rem] border border-slate-800/40 overflow-hidden shadow-xl">
-              <div className="flex bg-slate-950/40 p-2 gap-2">
+              <div className="flex bg-slate-950/40 p-2 gap-2 overflow-x-auto">
                 {[
                   { id: 'diagram', label: 'Field Pipeline', icon: Network },
+                  { id: 'monitor', label: '4D Monitor', icon: View },
+                  { id: 'voice', label: 'Voice Link', icon: Mic },
                   { id: 'code', label: 'Circuit Logic', icon: Code },
-                  { id: 'stats', label: 'Coherence Metrics', icon: Activity }
+                  { id: 'stats', label: 'Topology Metrics', icon: Activity }
                 ].map((tab) => (
                   <button 
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
-                    className={`flex-1 py-3 px-4 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] flex items-center justify-center space-x-2 transition-all
+                    className={`flex-1 min-w-[120px] py-3 px-4 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] flex items-center justify-center space-x-2 transition-all
                       ${activeTab === tab.id 
                         ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' 
                         : 'text-slate-500 hover:bg-white/5 hover:text-slate-300'}`}
@@ -143,6 +156,8 @@ const App: React.FC = () => {
 
               <div className="p-10 min-h-[400px]">
                 {activeTab === 'diagram' && <PipelineDiagram />}
+                {activeTab === 'monitor' && <div className="animate-in fade-in duration-700"><FieldMonitoring4D /></div>}
+                {activeTab === 'voice' && <div className="animate-in slide-in-from-bottom-8 duration-700"><VoiceAssistant /></div>}
                 {activeTab === 'code' && (
                   <div className="space-y-8 animate-in fade-in duration-500">
                     <CircuitVisualizer />
@@ -153,7 +168,7 @@ const App: React.FC = () => {
                           <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/50"></div>
                           <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/50"></div>
                         </div>
-                        <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">cirq_conscious_kernel.py</span>
+                        <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">cirq_evolution_v3_4.py</span>
                       </div>
                       <pre className="text-cyan-300 leading-relaxed selection:bg-cyan-500/20">
                         <code>{CIRQ_CODE_SNIPPET}</code>
@@ -218,10 +233,10 @@ const App: React.FC = () => {
                  </div>
                  <div className="flex justify-between items-end pb-2">
                    <div>
-                     <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Twistor Entropy</div>
-                     <div className="text-sm font-bold text-slate-200">0.042 bits/ψ</div>
+                     <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Audio Synchrony</div>
+                     <div className="text-sm font-bold text-slate-200">0.999 ζ</div>
                    </div>
-                   <div className="text-[10px] text-purple-400 font-black uppercase">Minimal</div>
+                   <div className="text-[10px] text-purple-400 font-black uppercase">Phase-Locked</div>
                  </div>
                </div>
             </div>
