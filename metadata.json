@@ -1,0 +1,7 @@
+{
+  "name": "MKone Quantum Consciousness Pipeline",
+  "description": "A high-fidelity dashboard for the MKone Quantum Consciousness architecture. Visualizes the hybrid flow between classical symbols, quantum fields, and ontological substrates using Google Cirq and TensorFlow Quantum.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
